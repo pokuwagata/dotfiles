@@ -11,18 +11,19 @@
 ### TODO
 
 - [ ] helpの操作を覚える
-- [ ] 画面分割のキーを割り当てる
+- [x] 画面分割のキーを割り当てる
 - [x] init/keymap.vimの変更が反映されないのはなぜ？
 - [x] vim-airlineのthemeがうまく動作しない
   - <https://unix.stackexchange.com/questions/348771/why-do-vim-colors-look-different-inside-and-outside-of-tmux>
 - [ ] .vim/pluggedの中はどうgit管理されているのか不明
   - <https://danielmiessler.com/blog/git-modified-untracked/>
-- [ ] easy-motionはLeaderkey1つでいい
+- [x] easy-motionはLeaderkey1つでいい
 - [ ] 矢印キーと隣接する文字が重なる
 - [ ] ショートカットキーでインデントしたい
 - [ ] markdownでインデントを継続して欲しい
-- [ ] tabの操作を覚える
-- [ ] 水平分割を縦分割に変更できないか？
+- [x] tabの操作を覚える
+- [x] 水平分割を縦分割に変更できないか？
+  - 無理っぽいので諦める
 - [ ] vimのブックマークとは？
 
 ### ハマり
@@ -42,6 +43,7 @@
   - :Historyで履歴からファイルを開ける
 - Gstatus→ Gdiffでgitの差分を確認しやすい
   - fzfのGFiles?がより便利
+- fzfをキーから呼べるようにすると超便利
 
 
 ## tmux
@@ -55,3 +57,5 @@
     - <https://qiita.com/shibukk/items/8c9362a5bd399b9c56be>
   - git ls-files
     - <https://qiita.com/zimathon/items/d964c4b3cc688cb2d114>
+- tig 使えるようにしたい
+  - <https://qiita.com/suino/items/b0dae7e00bd7165f79ea>

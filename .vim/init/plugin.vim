@@ -8,5 +8,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'gkeep/iceberg-dark'
+Plug '907th/vim-auto-save'
 call plug#end()
 
