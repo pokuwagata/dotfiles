@@ -54,6 +54,11 @@
   - <https://medium.com/usevim/vim-101-quickfix-and-grep-c782cb65e524>
 - powerlineはrictyで使用するには追加のフォントが必要
   - また、追加で.vimないで文字を定義したりするのが煩わしいので使わない
+- 職場環境でtmux内でiceberg.vimが反映されない問題が再発
+  - 結局.tmux.conf内で`set -g default-terminal "screen-256color"`の”を付けて再起動したら直った
+  - しかし"を外しても元には戻らなかった
+  - style.vimの`background=dark`は関係ないみたい
+  - 結局謎
 
 ### メモ
 

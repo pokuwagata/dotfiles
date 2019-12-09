@@ -6,3 +6,4 @@ brew install reattach-to-user-namespace
 brew install coreutils
 brew install fzf
 brew install ghq
+brew install tig
