@@ -18,13 +18,31 @@
 - [ ] .vim/pluggedの中はどうgit管理されているのか不明
   - <https://danielmiessler.com/blog/git-modified-untracked/>
 - [x] easy-motionはLeaderkey1つでいい
-- [ ] 矢印キーと隣接する文字が重なる
-- [ ] ショートカットキーでインデントしたい
-- [ ] markdownでインデントを継続して欲しい
+- [x] 矢印キーと隣接する文字が重なる
+  - terminalとvimrcのambiwidthで解決？
+- [x] ショートカットキーでインデントしたい
+  - >>, tabで可能
+- [x] markdownでインデントを継続して欲しい
+  - set autoindent
 - [x] tabの操作を覚える
 - [x] 水平分割を縦分割に変更できないか？
   - 無理っぽいので諦める
 - [ ] vimのブックマークとは？
+- [x] swapファイルをgitで無視するか作らなくてもいいのでは
+  - 作らないように設定
+- [x] vimからディレクトリを作成したりファイルを作成したりしたい
+  - :Exでエクスプローラモードにして、%で新規ファイル、dで新規ディレクトリ
+  - nerdtreeでできることはだいたいできるっぽい
+    - <https://blog.stevenocchipinti.com/2016/12/28/using-netrw-instead-of-nerdtree-for-vim/>
+- [x] vimで名前を付けて保存はできるのか
+  - :e ファイルパスで新規ファイル
+  - :w ファイルパスで名前を指定して保存
+- [ ] macのクリップボードとヤンクで競合しないようにしたい気もする
+- [ ] fzf git filesで日本語を正しく扱えない？
+- [ ] 垂直分割かつ空のバッファを開いてフォーカス当てたい
+- [ ] markdownの場合だけフォントサイズや行間を変えられないか
+- [ ] markdownのリアルタイムプレビューはできないか
+- [ ] markdownのlinter欲しい
 
 ### ハマり
 
@@ -59,3 +77,6 @@
     - <https://qiita.com/zimathon/items/d964c4b3cc688cb2d114>
 - tig 使えるようにしたい
   - <https://qiita.com/suino/items/b0dae7e00bd7165f79ea>
+- tig, figitive解説
+  - <http://wakame.hatenablog.jp/entry/2017/05/03/222511>
+

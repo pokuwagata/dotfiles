@@ -1,7 +1,7 @@
 let mapleader = "\<Space>"
 
 noremap <Leader>] :source ~/.vimrc<CR>
-noremap <C-b> :NERDTreeToggle<CR>
+noremap <Leader>e :Ex<CR>
 
 "easymotion
 map <Leader> <Plug>(easymotion-prefix)
@@ -23,6 +23,8 @@ nnoremap sK <C-w>K
 nnoremap sL <C-w>L
 nnoremap sH <C-w>H
 nnoremap sw <C-w>w
+nnoremap sn <C-w>n
+nnoremap sN <C-w>v
 nnoremap st :<C-u>tabnew<CR>
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
