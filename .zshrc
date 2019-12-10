@@ -63,6 +63,7 @@ function chpwd() {
 
 # override /etc/paths
 PATH=/usr/local/opt/coreutils/libexec/gnubin:${PATH}
+PATH=/Users/nakahata/.nodebrew/current/bin:${PATH}
 MANPATH=/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}
 
 

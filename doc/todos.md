@@ -43,6 +43,8 @@
 - [ ] markdownの場合だけフォントサイズや行間を変えられないか
 - [ ] markdownのリアルタイムプレビューはできないか
 - [ ] markdownのlinter欲しい
+- [ ] fzfのRg試す
+- [ ] カーソルを変えられないか？
 
 ### ハマり
 
@@ -59,6 +61,9 @@
   - しかし"を外しても元には戻らなかった
   - style.vimの`background=dark`は関係ないみたい
   - 結局謎
+  - 職場のnodebrewが動作しない
+    - nodebrewのパスが通っていない、nodebrewのパスよりローカルのnodeのパスが先になっている
+    - zshrcに書いて解決する。しかしnodebrewはユーザフォルダがnakahataになってしまっているので微妙
 
 ### メモ
 
