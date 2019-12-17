@@ -14,3 +14,9 @@ let g:auto_save = 1
 
 set noswapfile
 set nobackup
+set nowritebackup
+
+" for coc.vim
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes

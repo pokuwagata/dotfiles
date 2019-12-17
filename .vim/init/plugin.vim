@@ -9,5 +9,8 @@ Plug 'cocopon/iceberg.vim'
 Plug 'gkeep/iceberg-dark'
 Plug '907th/vim-auto-save'
 Plug 'sheerun/vim-polyglot'
+Plug 'tyru/open-browser.vim'
+" Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 

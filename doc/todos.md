@@ -32,7 +32,6 @@
   - 作らないように設定
 - [x] vimからディレクトリを作成したりファイルを作成したりしたい
   - :Exでエクスプローラモードにして、%で新規ファイル、dで新規ディレクトリ
-  - nerdtreeでできることはだいたいできるっぽい
     - <https://blog.stevenocchipinti.com/2016/12/28/using-netrw-instead-of-nerdtree-for-vim/>
 - [x] vimで名前を付けて保存はできるのか
   - :e ファイルパスで新規ファイル
@@ -64,6 +63,16 @@
   - 職場のnodebrewが動作しない
     - nodebrewのパスが通っていない、nodebrewのパスよりローカルのnodeのパスが先になっている
     - zshrcに書いて解決する。しかしnodebrewはユーザフォルダがnakahataになってしまっているので微妙
+- cdすると以下のエラー
+   ```
+   dyld: Library not loaded: /usr/local/opt/readline/lib/libreadline.7.dylib
+     Referenced from: /usr/local/bin/gawk
+       Reason: image not found
+  ```
+  - `brew link readline --force`したがダメ
+  - gawkをuninstall, installする
+    - <https://github.com/atomantic/dotfiles/issues/23>
+    - 解決した
 
 ### メモ
 
