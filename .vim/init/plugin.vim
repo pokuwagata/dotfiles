@@ -10,7 +10,13 @@ Plug 'gkeep/iceberg-dark'
 Plug '907th/vim-auto-save'
 Plug 'sheerun/vim-polyglot'
 Plug 'tyru/open-browser.vim'
-" Plug 'dense-analysis/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'vim-scripts/vim-gitgutter'
 call plug#end()
 

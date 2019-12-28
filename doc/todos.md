@@ -8,8 +8,6 @@
 
 ## vim
 
-### TODO
-
 - [ ] helpの操作を覚える
 - [x] 画面分割のキーを割り当てる
 - [x] init/keymap.vimの変更が反映されないのはなぜ？
@@ -44,9 +42,30 @@
 - [ ] markdownのlinter欲しい
 - [ ] fzfのRg試す
 - [ ] カーソルを変えられないか？
+- [x] gitで差分が発生していたら横に表示して欲しい
+- [ ] 半角空白を表示
+- [x] vim-lspでjsxファイルを取り扱いたい
 
 ### ハマり
 
+- LspDocumentRangeFormat
+  - Document range formatting not supported for typescriptreact 
+  - なんか動作しない
+- vim-lspで.tsxファイルを開いてもLSPが提案されない
+  - whitelist登録しても機能していない模様
+  - 逆にwhitelist登録消したら動作し始めた。謎
+  - なんか動作するときとしないときがある
+  - <https://blog.micheam.com/2019/05/21/vim-lsp-setting-for-typescript/>
+- vim-lspで.jsファイルを開いたときにLSPを提案されない問題
+  - 1度vim-lsp-settingsをアンインストールしたら直った
+    - そのときはtypescript-language-serverが入った
+- vim-lspの導入はスムーズに行ったが、エラーマークが正しく表示されない問題に直面
+  - <https://github.com/prabirshrestha/vim-lsp/issues/320>
+  - どうもvimのバージョンが古いことが原因っぽい
+  - brew upgrade vimで8.0→8.2に更新して解決したっぽい
+    - 初期表示時にはマークが出ない問題が発生
+    - というよりは、表示に時間がかかる？　git-gutterと競合する問題もある
+    - aleの方が良さそうなのでこっちを使うことにする
 - .vimディレクトリ内を再帰的にsymlink貼れてなくてvimrcの設定が反映されなかった
   - cp -rsでいけたが、lnでは無理なのか？
 - git-fugitiveはGit Repository配下でしか動作しない（symlink先はダメみたい）
@@ -81,7 +100,8 @@
 - Gstatus→ Gdiffでgitの差分を確認しやすい
   - fzfのGFiles?がより便利
 - fzfをキーから呼べるようにすると超便利
-
+- vim-lspはソースコードを読まないと動作がよく分からない
+  - vim-scriptをちゃんと読めるようにしないときつくなってきた
 
 ## tmux
 
