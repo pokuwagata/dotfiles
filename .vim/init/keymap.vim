@@ -7,9 +7,9 @@ noremap <Leader>e :Ex<CR>
 map <Leader> <Plug>(easymotion-prefix)
 
 "fzf
-nnoremap <Leader>g :GFiles<CR>
+nnoremap <Leader>f :GFiles<CR>
 nnoremap <Leader>s :GFiles?<CR>
-nnoremap <Leader>h :History<CR>
+nnoremap <Leader>F :GGrep<CR>
 
 " open-browser.vim
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -37,6 +37,21 @@ nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 nnoremap s+ <C-w>\|<C-w>_
 nnoremap s= <C-w>=
+
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> <f2> <plug>(lsp-rename)
+  nmap <buffer> = <plug>(lsp-document-format)
+  " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+  au!
+  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 " coc.vim
 " inoremap <silent><expr> <TAB>

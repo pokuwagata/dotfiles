@@ -3,7 +3,10 @@ let NERDTreeShowHidden=1
 set background=dark
 colorscheme iceberg
 
-set cursorline
+set list
+set listchars=space:･,tab:¦･,trail:-,nbsp:%,eol:↲
+hi SpecialKey ctermfg=238
+hi NonText ctermfg=239
 
 " lightline
 set noshowmode

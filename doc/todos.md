@@ -40,14 +40,36 @@
 - [ ] markdownの場合だけフォントサイズや行間を変えられないか
 - [ ] markdownのリアルタイムプレビューはできないか
 - [ ] markdownのlinter欲しい
-- [ ] fzfのRg試す
+- [x] fzfのRg試す
+  - git-grepのように配下のファイルをgrepするわけではないっぽい？よく分からない
 - [ ] カーソルを変えられないか？
 - [x] gitで差分が発生していたら横に表示して欲しい
-- [ ] 半角空白を表示
+- [x] 半角空白を表示
+  - というよりはインデントが分かったほうが嬉しい→プラグインが動作しない
+  - <https://stackoverflow.com/questions/1675688/make-vim-show-all-white-spaces-as-a-character>
 - [x] vim-lspでjsxファイルを取り扱いたい
+- [x] 開いているファイルをgit-diffしたい
+  - figitiveから:Gdiff
+- [x] fzfでgit-grepできるようにする
+  - <https://github.com/junegunn/fzf.vim>
+- [ ] コメントを含むソースコードをvimへペーストするとコメントが増えるのなぜ
+- [ ] 範囲選択の色変えたい
 
 ### ハマり
 
+- なぜかstyle.vimを開くとgit-gutterがエラーを起こす
+  - その後autosaveもエラーを起こす
+  - 両方のプラグインをアンインストールしてもダメ
+  - 1行目の`let NERDTreeShowHidden=1`を消すと発生する模様
+    - コメントアウトならOK
+    - なぜ？
+- 可視化した文字の色を変えたい
+  - <https://vi.stackexchange.com/questions/6136/how-to-dim-characters-from-set-list>
+  - <http://cohama.hateblo.jp/entry/2013/08/11/020849>
+- Yggdroot/indentLine
+  - vim8で動かないっぽい
+  - <https://github.com/Yggdroot/indentLine/issues/269>
+  - tab文字可視化できればそれでいいと言えばいい
 - LspDocumentRangeFormat
   - Document range formatting not supported for typescriptreact 
   - なんか動作しない
@@ -102,6 +124,9 @@
 - fzfをキーから呼べるようにすると超便利
 - vim-lspはソースコードを読まないと動作がよく分からない
   - vim-scriptをちゃんと読めるようにしないときつくなってきた
+- tmuxでvimを2painで開いているとときどき表示が崩れる
+- figitive Grep, Glogが色々使えそう
+  <http://vimcasts.org/episodes/fugitive-vim-exploring-the-history-of-a-git-repository/>
 
 ## tmux
 

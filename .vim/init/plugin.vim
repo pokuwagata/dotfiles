@@ -18,5 +18,6 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'vim-scripts/vim-gitgutter'
+Plug 'Yggdroot/indentLine' 
 call plug#end()
 
