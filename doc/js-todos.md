@@ -7,7 +7,7 @@
   - eslintrcが含まれているディレクトリを開くと動作する
   - eslintのグローバルインストールは不要
 - [x] syntax highlight
-  - できているっぽい 
+  - できているっぽい
   - [x] jsx, tsx
   - [x] typescript
 - [ ] 保存時にprettier適用

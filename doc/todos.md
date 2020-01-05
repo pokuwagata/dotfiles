@@ -34,18 +34,17 @@
 - [x] vimで名前を付けて保存はできるのか
   - :e ファイルパスで新規ファイル
   - :w ファイルパスで名前を指定して保存
-- [ ] macのクリップボードとヤンクで競合しないようにしたい気もする
 - [ ] fzf git filesで日本語を正しく扱えない？
 - [ ] 垂直分割かつ空のバッファを開いてフォーカス当てたい
-- [ ] markdownの場合だけフォントサイズや行間を変えられないか
-- [ ] markdownのリアルタイムプレビューはできないか
-- [ ] markdownのlinter欲しい
 - [x] fzfのRg試す
   - git-grepのように配下のファイルをgrepするわけではないっぽい？よく分からない
-- [ ] カーソルを変えられないか？
+  - ripgrepのインストールが別に必要だった。
+- [x] カーソルを変えられないか？
+  - <https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes>
 - [x] gitで差分が発生していたら横に表示して欲しい
 - [x] 半角空白を表示
   - というよりはインデントが分かったほうが嬉しい→プラグインが動作しない
+    - 半角空白の表示のためにハイライトの色を変更したところ、見えるようになった。動作はしていた模様
   - <https://stackoverflow.com/questions/1675688/make-vim-show-all-white-spaces-as-a-character>
 - [x] vim-lspでjsxファイルを取り扱いたい
 - [x] 開いているファイルをgit-diffしたい
@@ -53,9 +52,49 @@
 - [x] fzfでgit-grepできるようにする
   - <https://github.com/junegunn/fzf.vim>
 - [ ] コメントを含むソースコードをvimへペーストするとコメントが増えるのなぜ
-- [ ] 範囲選択の色変えたい
+- [x] 範囲選択の色変えたい
+- [x] 行番号の色変えたい
+  - 変えてみたが、見えにくいぐらいでちょうどよいかも
+- [ ] `xnoremap <silent> <leader>ag  y:Ag <C-R>"<CR>`の意味を理解する
+- [x] vimの言語を英語にしたい
+- [ ] コメントを含む部分をgccしたらコメントも含めてコメントアウトして欲しい
+  - 難しそう。その用途なら素直に行頭挿入した方が良いのかも
+- [x] fzfでvim-yoinkの内容を絞り込んで貼り付けしたい
+  - 貼り付けコマンドがneovim用に書かれているっぽくてダメだたｔ
+  - <https://qiita.com/karasu78/items/d1489f7cff0c2e0be890>
+  - でもvim-peekabooでも別に良さそう
+  - これでfzfの絞り込みできるっぽい
+    - <http://noahorberg.hatenablog.com/entry/2019/12/15/144256>
+  - [x] vimのレジスタについて整理する
+    - <http://noahorberg.hatenablog.com/entry/2019/12/15/144256>
+- [ ] bash-language-server: exited 
+- [x] コメントで改行したときにコメント継続しない
+  - <https://qiita.com/necojackarc/items/1f997481764ed42023a7>
+  - 単純にbasic.vimに書いてもダメだったのでafter/plugin/に入れた
+  - でもファイルタイプvimだけはなぜかダメ。goやshellは大丈夫だった
+- [x] vimのコマンドラインでカーソル移動のショートカットキー使えないか
+  - <https://stackoverflow.com/questions/2075569/how-can-i-move-around-in-the-vim-command-line>
+- [x] カーソルが_だと位置がわかりにくい。ブロックで色を変えたら良いのでは？
+  - [x] もしくはカレントの行番号の色を変えるべき
+    - set cursorline
+    - hi CursorLineNr ctermfg=245 ctermbg=235 cterm=boldk
+    - <https://stackoverflow.com/questions/58174536/vim-remove-underline-from-line-number>
+- [x] キャメルケースで単語単位削除したい
+- [x] xが使えないのは不便
+  - xlやdlで代用できる。cutlassを入れるとこうなってしまうらしい
+  - できれば1キーでやりたいところではある
+- [ ] snippet触ってみる
+- [ ] vim-template触ってみる
 
 ### ハマり
+
+- vim-language-serverがエラー
+
+  ```
+  Fri Jan  3 00:55:38 2020:["<---(stderr)",1,"vim-language-server",["/Users/nakahata/.vim/plugged/vim-lsp-settings/servers/vim-language-server/node_modules/vim-language-server/out/index.js:14041","    let isMatch = picomatch(String(patterns[i]), { ...options, onResult }, true);","                                                   ^^^","SyntaxError: Unexpected token ...","    at createScript (vm.js:56:10)","    at Object.runInThisContext (vm.js:97:10)","    at Module._compile (module.js:542:28)","    at Object.Module._extensions..js (module.js:579:10)","    at Module.load (module.js:487:32)","    at tryModuleLoad (module.js:446:12)","    at Function.Module._load (module.js:438:3)","    at Module.require (module.js:497:17)","    at require (internal/module.js:20:19)","    at Object.<anonymous> (/Users/nakahata/.vim/plugged/vim-lsp-settings/servers/vim-language-server/node_modules/vim-language-server/bin/index.js:3:1)",""]]
+  ```
+
+  - Node.js v6→v10に更新したら動作した
 
 - なぜかstyle.vimを開くとgit-gutterがエラーを起こす
   - その後autosaveもエラーを起こす
@@ -105,11 +144,13 @@
     - nodebrewのパスが通っていない、nodebrewのパスよりローカルのnodeのパスが先になっている
     - zshrcに書いて解決する。しかしnodebrewはユーザフォルダがnakahataになってしまっているので微妙
 - cdすると以下のエラー
+
    ```
    dyld: Library not loaded: /usr/local/opt/readline/lib/libreadline.7.dylib
      Referenced from: /usr/local/bin/gawk
        Reason: image not found
   ```
+
   - `brew link readline --force`したがダメ
   - gawkをuninstall, installする
     - <https://github.com/atomantic/dotfiles/issues/23>
@@ -127,6 +168,19 @@
 - tmuxでvimを2painで開いているとときどき表示が崩れる
 - figitive Grep, Glogが色々使えそう
   <http://vimcasts.org/episodes/fugitive-vim-exploring-the-history-of-a-git-repository/>
+
+## Shell
+
+- [x] コマンドラインからGithubにリポジトリを作成したい
+  - SSHキーによる認証失敗
+    - <https://help.github.com/ja/github/authenticating-to-github/error-permission-denied-publickey>
+    - 既存のSSHキーをGithubアカウントに登録
+      - <https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account>
+    - `$ ssh -vT git@github.com`
+      - `Hi pokuwagata! You've successfully authenticated, but GitHub does not provide shell access.`
+      - 成功したっぽい
+- [ ] hub deleteはない？
+- [ ] ghq getしたディレクトリじゃないとC-gの候補には出てこない？
 
 ## tmux
 

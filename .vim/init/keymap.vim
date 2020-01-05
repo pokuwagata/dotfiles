@@ -4,12 +4,23 @@ noremap <Leader>] :source ~/.vimrc<CR>
 noremap <Leader>e :Ex<CR>
 
 "easymotion
-map <Leader> <Plug>(easymotion-prefix)
+map <Leader><Leader> <Plug>(easymotion-prefix)
+
+"camelcase
+let g:camelcasemotion_key = '<leader>'
 
 "fzf
 nnoremap <Leader>f :GFiles<CR>
 nnoremap <Leader>s :GFiles?<CR>
 nnoremap <Leader>F :GGrep<CR>
+xnoremap <silent> <Leader>g y:Rg <C-R>"<CR>
+
+"Cutlass
+nnoremap x d
+xnoremap x d
+nnoremap xx dd
+nnoremap X D
+nnoremap X D
 
 " open-browser.vim
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -41,9 +52,11 @@ nnoremap s= <C-w>=
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
-  nmap <buffer> gd <plug>(lsp-definition)
-  nmap <buffer> <f2> <plug>(lsp-rename)
-  nmap <buffer> = <plug>(lsp-document-format)
+  nmap <buffer> <Leader>gd :<C-u>LspDefinition<CR>
+  nmap <buffer> <Leader>re :<C-u>LspRename<CR>
+  nmap <buffer> <Leader>= :<C-u>LspDocumentFormat<CR>
+  nmap <buffer> <Leader>ds :<C-u>LspDocumentSymbol<CR>
+  nmap <buffer> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
   " refer to doc to add more commands
 endfunction
 

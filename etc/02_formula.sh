@@ -7,3 +7,4 @@ brew install coreutils
 brew install fzf
 brew install ghq
 brew install tig
+brew install hub
