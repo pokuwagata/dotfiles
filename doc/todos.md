@@ -85,6 +85,10 @@
   - できれば1キーでやりたいところではある
 - [ ] snippet触ってみる
 - [ ] vim-template触ってみる
+- [ ] vim-scriptでgccできない（vim-polygot?)
+- [ ] leader e ダメ
+- [ ] ctrl + kでtmux逆周りしたい
+- [ ] optionキーでターミナル上で単語移動したい
 
 ### ハマり
 
