@@ -1,7 +1,7 @@
 let mapleader = "\<Space>"
 
 noremap <Leader>] :source ~/.vimrc<CR>
-noremap <Leader>e :Ex<CR>
+noremap <Leader>E :Ex<CR>
 
 "easymotion
 map <Leader><Leader> <Plug>(easymotion-prefix)
@@ -10,8 +10,10 @@ map <Leader><Leader> <Plug>(easymotion-prefix)
 let g:camelcasemotion_key = '<leader>'
 
 "fzf
-nnoremap <Leader>f :GFiles<CR>
+nnoremap <Leader>gf :GFiles<CR>
+nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>s :GFiles?<CR>
+nnoremap <Leader>h :History<CR>
 nnoremap <Leader>F :GGrep<CR>
 xnoremap <silent> <Leader>g y:Rg <C-R>"<CR>
 
@@ -21,6 +23,10 @@ xnoremap x d
 nnoremap xx dd
 nnoremap X D
 nnoremap X D
+
+"ctags
+"tmux uses <C-t>
+nnoremap <C-[> :po<CR>
 
 " open-browser.vim
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -49,54 +55,60 @@ nnoremap sQ :<C-u>bd<CR>
 nnoremap s+ <C-w>\|<C-w>_
 nnoremap s= <C-w>=
 
-function! s:on_lsp_buffer_enabled() abort
-  setlocal omnifunc=lsp#complete
-  setlocal signcolumn=yes
-  nmap <buffer> <Leader>gd :<C-u>LspDefinition<CR>
-  nmap <buffer> <Leader>re :<C-u>LspRename<CR>
-  nmap <buffer> <Leader>= :<C-u>LspDocumentFormat<CR>
-  nmap <buffer> <Leader>ds :<C-u>LspDocumentSymbol<CR>
-  nmap <buffer> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
-  " refer to doc to add more commands
-endfunction
-
-augroup lsp_install
-  au!
-  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
+"for vim-lsp
+"function! s:on_lsp_buffer_enabled() abort
+"  setlocal omnifunc=lsp#complete
+"  setlocal signcolumn=yes
+"  
+"  nmap <buffer> <Leader>gd :<C-u>LspDefinition<CR>
+"  nmap <buffer> <Leader>re :<C-u>LspRename<CR>
+"  nmap <buffer> <Leader>= :<C-u>LspDocumentFormat<CR>
+"  nmap <buffer> <Leader>ds :<C-u>LspDocumentSymbol<CR>
+"  nmap <buffer> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
+"  " refer to doc to add more commands
+"endfunction
+"
+"augroup lsp_install
+"  au!
+"  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+"  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+"augroup END
 
 " coc.vim
-" inoremap <silent><expr> <TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ <SID>check_back_space() ? "\<TAB>" :
-" \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" function! s:check_back_space() abort
-" let col = col('.') - 1
-" return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" nmap <silent> [g <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+" Find symbol of current document
+nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
 
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-" function! s:show_documentation()
-" if (index(['vim','help'], &filetype) >= 0)
-" execute 'h '.expand('<cword>')
-" else
-" call CocAction('doHover')
-" endif
-" endfunction
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
-" nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rn <Plug>(coc-rename)
 
 " xmap <leader>a  <Plug>(coc-codeaction-selected)
 " nmap <leader>a  <Plug>(coc-codeaction-selected)

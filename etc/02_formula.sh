@@ -8,3 +8,4 @@ brew install fzf
 brew install ghq
 brew install tig
 brew install hub
+brew install ctags

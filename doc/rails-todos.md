@@ -8,19 +8,116 @@
     - とりあえず動作しているっぽい
 - [ ] End-wise
 - [x] Linting
+  - rubocopはデフォルトの指摘事項が多すぎる
+  - 一旦どういう指摘があるのか観察するためにこのままにしておく
 - [x] Navigation between files
 - [x] LSP
-  - [x] プロジェクト全体でシンボルジャンプ
-  - [x] キーマップ設定
-- [ ] Ctags
+  - coc.nvim
+    - やはりvim-lspの挙動が怪しいので戻す
+      - solargraphの補完やbundle execで使用するオプションが...
+    - [ ] プロジェクト全体でシンボルジャンプ
+    - [ ] bundle exec solargraphオプション
+    - [ ] Railsの補完やジャンプ
+    - [ ] solargraph extentionをインストールするように設定
+  - vim-lsp
+    - [x] プロジェクト全体でシンボルジャンプ
+    - [x] キーマップ設定
+    - [ ] 外部のgemはLSPで補完できない？
+      - railsについては、project rootでsolargraph bundleでいけたので他のgemもいけてると思う
+      - [ ] ただし@user.allなどは補完できなかった
+      - <https://github.com/castwide/solargraph/issues/87>
+- [x] Ctags
 - [ ] Snippet
 - [x] rvm
   - <https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-macos>
   - <https://github.com/rbenv/rbenv#how-rbenv-hooks-into-your-shell>
   - rbenv initを実行すると、rbenv initをzshrcに含めるように案内されるので追加
   - rvm global 2.7.0した後にsourceしたらruby --versionに反映された
+- [ ] debug
+  - [ ] <https://stackoverflow.com/questions/16742516/vim-ruby-debugger-style-breakpoints-with-pry-in-vim>
+- [ ] 1行目がコメントのコードをコピペするとその下にコメント記号が挿入されて貼り付けられる問題
+- [x] c-tagsでrailsの定義に移動できるようにできないか
+  - brew install ctags
+  - vim-ctags install
+  - ctags -R .
+    - [x] プロジェクト配下にbundle install --path vendor/bundle してないとダメ？
+      - だめそう
+    - [x] 生成ファイルの取り扱い
+      - ctags -R . でもいい、gitignoreでctagsを無視すればいいので
+      - 参考 <https://andrew.stwrt.ca/posts/vim-ctags/#fn:2>
+    - [ ] 再生成のhook
+      - gemの部分はそんなに変わらないだろうと思うので一旦保留（自分で書いているところはLSでいけるので）
+  - [x] 定義へ移動・定義から戻るのキーマップを定義
+  - [x] gem, railsの定義にジャンプできるか確認
+  - [x] fzf.vimで:Ctags
 
 ## ハマり
+
+### プロジェクト配下でbundle install or bundle install --path vendor/bundle はどっちがいい？
+
+- <https://qiita.com/jnchito/items/99b1dbea1767a5095d85>
+- どっちでもいい
+
+### 0からsolargraphでrailsの補完を行う手順
+
+- gem install solargraph (プロジェクト内だけで使うならGemfileに追記してbundle installも可能)
+- :CocInfoで動作確認
+- <https://solargraph.org/guides/rails>
+  - solargraph bundle
+  - rails.rb置く
+- 基本的には対応は不完全らしい
+  - <https://github.com/castwide/solargraph/issues/87>
+- Railsライブラリは、クラス名で定義元にジャンプはできるが、メソッドができないみたい
+  - solargraph config して.solargraph.yamlでvendor/bundleを含めるようにしたら解決するのでは？
+  - 特に動き変わらなかった、逆にsymbolが正しく表示されなくなった（扱うファイルが多すぎるせいかも）
+
+### railsプロジェクトのルートをどう判断しているか不明問題
+
+- <https://github.com/castwide/solargraph/issues/78>
+
+### .solargraph.ymlのrepotersの設定が反映されない
+
+- []にしてbundle exec solargraph repotersすると反映されていない
+- vimで開いてもrubocopが動作している
+- そもそもlet g:lsp_diagnostics_enabled = 0  なはずだが
+  - aleが残っていたため消去してみる
+    - rubocop効かなくなった
+- 再度LSPのg:lsp_diagnostics_enabled = 1して有効化したら動作した
+  - .lib/hoge.rbはresolve失敗と表示された
+    - requireを相対パスで書くときはrubyコマンドを実行する位置からの相対パスらしい（絶対パスでも書けるが）
+  - .solargraph.ymlから設定を消したら↑表示されなくなった！（つまり反映されている）
+    - でも'./lib/hoge'をLSPが解決できないことは変わらなかった...
+  - コマンドラインにエラーの内容表示して欲しい
+    - そもそもaleとvim-lspのこれはどちらを使うべきなのか
+    - 結局変わらないのでaleにしておく、gem install rubocopされていれば動作する
+
+### yard docが補完対象にならない
+
+- プロジェクト内で使用しているgemだけを対象にしたい
+- プロジェクト内にyard, minitestをインストールしてminitestのdocを生成することには成功した
+- vim-lspでインストールしたsolargraphがどのようにyarddocを探しているのか
+- yard gemsするとdocはどこに生成されているのか？
+- もし$PATHからsolargraphが実行できるのならどうなるか？→動いた
+- プロジェクト内のdocsを削除したらどうなのか？→補完が効かなくなった
+- gem uninstall minitestした
+- bundle exec yard gems→docディレクトリは生成されなかった。失敗？
+- bundle exec yard doc vendor/... でminitestを指定して実行→docは生成されたが、補完は効かない
+- 再度gem install minitestしたが補完は効かない
+- yard gemsしたらエラーは発生したが補完は聞くようになった
+- gem uninstall minitestすると効かなくなったが、再度yard gemsしたら補完が動作する
+
+- vim-lsp-settingsのsolargraphはyarddoc探せない
+- 結論としては、ローカルのdocsは見ていない。rbenv上でインストール済みのgemに対してyard gemsすると見てくれる。
+  - bundle exec solargraphする必要があるっぽい
+    - cocやvscodeにはsolargraph.useBundlerオプションがある
+    - <https://github.com/neoclide/coc-solargraph>
+  - vimrcのコマンドをbundle exec solargraphに書き換えたが、動作したのでこれでも良さそう
+    - でもtest/hoge.rbから./lib/hoge.rbをrequireしてもLSに認識されない
+    - ./lib内なら補完可能、ジャンプも可能
+    - <https://github.com/castwide/vscode-solargraph/issues/118>
+
+- [ ] bundle execではなくyardocしたらどうだろう？
+
 
 ### vim-lsp
 
@@ -42,6 +139,7 @@
 ```
 
 - 名前を変更して無効化するとvim-lsp-settings配下から使用された
+- rbenvを使っている場合もshimsに残留していると同じ事象が発生する
 
 ### rubcop
 - `$ bundle`すると

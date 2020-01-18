@@ -24,13 +24,13 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tyru/open-browser.vim'
 
 " LSP
-Plug 'dense-analysis/ale'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'mattn/vim-lsp-settings'
 
 " Ruby on Rails
 Plug 'tpope/vim-rails'

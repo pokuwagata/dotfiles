@@ -45,6 +45,7 @@ alias st='tmux source-file ~/.tmux.conf'
 alias aw=anyframe-widget-select-widget
 alias l='ls -ltr --color=auto'
 alias la='ls -la --color=auto'
+alias ctags="`brew --prefix`/bin/ctags"
 
 # History
 export LANG=ja_JP.UTF-8

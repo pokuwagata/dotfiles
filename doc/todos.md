@@ -5,6 +5,12 @@
 - [ ] .vimディレクトリが存在していても更新してほしい
 - [ ] .vimファイル以外のsymlinkは貼らないで欲しい
 - [ ] .vimディレクトリを削除するとvim-plugでインストールされた内容もクリアされるので:PlugClean, :PlugInstallが必要になる
+- [x] .vim/plugged以外は、ディレクトリに対するsymlinkを貼ればいいのでないか
+  - [x] plugged以外のディレクトリに対してsymlinkを貼るスクリプトを書く
+    - pluggedの参照を~/.vimから変更することはできないか→難しそう
+    - [x] そもそもdotfilesにplugged含めなければ.vimディレクトリに対する参照にしても良いのでは？
+      - これでいけた。pluggedは自動的にdotfilesの方に作成されるので問題なし
+      - gitignoreにplugged入れておけばいい
 
 ## vim
 
@@ -72,6 +78,7 @@
   - <https://qiita.com/necojackarc/items/1f997481764ed42023a7>
   - 単純にbasic.vimに書いてもダメだったのでafter/plugin/に入れた
   - でもファイルタイプvimだけはなぜかダメ。goやshellは大丈夫だった
+  - rubyでもダメ
 - [x] vimのコマンドラインでカーソル移動のショートカットキー使えないか
   - <https://stackoverflow.com/questions/2075569/how-can-i-move-around-in-the-vim-command-line>
 - [x] カーソルが_だと位置がわかりにくい。ブロックで色を変えたら良いのでは？
@@ -86,9 +93,22 @@
 - [ ] snippet触ってみる
 - [ ] vim-template触ってみる
 - [ ] vim-scriptでgccできない（vim-polygot?)
-- [ ] leader e ダメ
+- [x] leader e ダメ
+  - leader Eで代用した
 - [ ] ctrl + kでtmux逆周りしたい
 - [ ] optionキーでターミナル上で単語移動したい
+- [ ] カーソル上の単語で検索したい
+- [ ] 検索結果をハイライトして欲しい
+
+### coc.nvim
+
+- [x] coc.nvim] error: Some plugin change completeopt on insert mode! 
+  - "suggest.autoTrigger": "trigger"　したら発生しなくなった
+  - 結局どういう意図のエラーなのかよく分からない
+  - language-serverをインストールしていれば対応するファイルでは補完された
+- [ ] coc.rename動かない？
+- [ ] どのlanguage serverを使用しているか設定ファイルに記載したら別の環境でもダウンロードできるようにしたい
+- [ ] [coc.nvim] The workspace is too large to index (5755 files, 5000 max)   
 
 ### ハマり
 
@@ -185,6 +205,7 @@
       - 成功したっぽい
 - [ ] hub deleteはない？
 - [ ] ghq getしたディレクトリじゃないとC-gの候補には出てこない？
+- [ ] なぜかカーソルが_になっていて、アンダーラインとかぶると認識できない
 
 ## tmux
 
