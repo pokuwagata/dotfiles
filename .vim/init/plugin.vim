@@ -2,10 +2,8 @@ call plug#begin('~/.vim/plugged')
 " must
 Plug 'chrisbra/vim-commentary'
 Plug 'easymotion/vim-easymotion'
-Plug 'svermeulen/vim-cutlass'
 Plug 'bkad/CamelCaseMotion'
 
-" Plug 'svermeulen/vim-yoink'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -19,9 +17,9 @@ Plug 'Yggdroot/indentLine'
 Plug 'vim-scripts/vim-gitgutter'
 
 " others
-Plug '907th/vim-auto-save'
 Plug 'sheerun/vim-polyglot'
 Plug 'tyru/open-browser.vim'
+Plug 'townk/vim-autoclose'
 
 " LSP
 Plug 'w0rp/ale'
@@ -36,7 +34,15 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'tpope/vim-rails'
 
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'mattn/vim-goimports'
+
+" JavaScript
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+" Vue
+Plug 'tomtom/tcomment_vim'
 
 call plug#end()
 

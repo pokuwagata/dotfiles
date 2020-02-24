@@ -11,6 +11,7 @@
     - [x] そもそもdotfilesにplugged含めなければ.vimディレクトリに対する参照にしても良いのでは？
       - これでいけた。pluggedは自動的にdotfilesの方に作成されるので問題なし
       - gitignoreにplugged入れておけばいい
+      - [ ] Github上にはplugged残ってしまったので、削除コミットした方がいい
 
 ## vim
 
@@ -78,7 +79,7 @@
   - <https://qiita.com/necojackarc/items/1f997481764ed42023a7>
   - 単純にbasic.vimに書いてもダメだったのでafter/plugin/に入れた
   - でもファイルタイプvimだけはなぜかダメ。goやshellは大丈夫だった
-  - rubyでもダメ
+    - 単にafter配下のsymlinkが正しくないことが原因だったため、解決した
 - [x] vimのコマンドラインでカーソル移動のショートカットキー使えないか
   - <https://stackoverflow.com/questions/2075569/how-can-i-move-around-in-the-vim-command-line>
 - [x] カーソルが_だと位置がわかりにくい。ブロックで色を変えたら良いのでは？
@@ -96,9 +97,20 @@
 - [x] leader e ダメ
   - leader Eで代用した
 - [ ] ctrl + kでtmux逆周りしたい
-- [ ] optionキーでターミナル上で単語移動したい
+- [x] optionキーでターミナル上で単語移動したい
+  - ターミナル上は可能
+  - vimではできないが、C-oでnormalに戻って動けばいいという話がある
+    - <https://vi.stackexchange.com/questions/10296/navigation-in-insert-mode>
 - [ ] カーソル上の単語で検索したい
-- [ ] 検索結果をハイライトして欲しい
+- [x] 検索結果をハイライトして欲しい
+  - [x] ハイライトした結果を消したい <https://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting>
+- [ ] cutlass入れている＋xnoremap x dしているが、visual modeでdを押すと削除した内容がレジスタに登録されてしまう
+- [ ] autosaveされるとuが効かない？(cutlassのせいかも? →OFFにしたけど関係なかった, filetype:goの場合だけ起きる？)
+  - vim-goを削除したら直ったぽい
+- [ ] filetype:go の場合に{}が補完されるとエンターを押した場合のインデントがうまくいかない？
+  - <https://vi.stackexchange.com/questions/233/how-can-i-automatically-indent-on-new-lines>
+  - 多分どのファイルタイプでも正しく動いていない
+- [ ] vim-plugでプラグインを削除するときに:PlugClean以外できないものか
 
 ### coc.nvim
 
@@ -108,9 +120,15 @@
   - language-serverをインストールしていれば対応するファイルでは補完された
 - [ ] coc.rename動かない？
 - [ ] どのlanguage serverを使用しているか設定ファイルに記載したら別の環境でもダウンロードできるようにしたい
+  - これでいけそう　let g:coc_global_extensions = ['coc-solargraph']
+  - <http://blog.jamesnewton.com/setting-up-coc-nvim-for-ruby-development>
 - [ ] [coc.nvim] The workspace is too large to index (5755 files, 5000 max)   
 
 ### ハマり
+
+- E464: Ambiguous use of user-defined command
+  - :Exでヒットするコマンドがプラグインによって追加されたことが原因
+  - <https://superuser.com/questions/1322471/vim-e464-ambiguous-use-of-user-defined-command>
 
 - vim-language-serverがエラー
 
@@ -206,6 +224,10 @@
 - [ ] hub deleteはない？
 - [ ] ghq getしたディレクトリじゃないとC-gの候補には出てこない？
 - [ ] なぜかカーソルが_になっていて、アンダーラインとかぶると認識できない
+- [x] 何が起きたか確認したいときに便利そう
+  - <https://stackoverflow.com/questions/16085958/find-the-files-that-have-been-changed-in-last-24-hours>
+  - `find ~/.ghq/github.com/yasslab -mmin -5 -ls`
+- [ ] optionキーで単語移動したい
 
 ## tmux
 

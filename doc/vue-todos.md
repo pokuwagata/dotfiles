@@ -1,0 +1,32 @@
+# vue-todos
+
+- [x] .vueファイルで補完が効くようにする
+  - <https://github.com/neoclide/coc-vetur>
+- [ ] syntaxハイライト
+  - 効いていない気がするが一旦保留（vim-vue入れたが変化しない、デフォルトである程度効いている）
+- [x] 閉じタグ補完
+  - <https://github.com/alvan/vim-closetag>
+- [x] タグの中でenterしたら1段インデントしてほしい
+  - vim-closetag使っていたら>でいける
+- [x] indent
+  - vim-vue入れると大丈夫っぽい
+- [x] prettierを適用する
+  - autosaveの課題は残る
+- [ ] eslintを適用する
+- [x] tagの中でdi<したい
+  - ditでいける
+- [ ] delimitMateはよく分からん
+  - expand_crは便利そうだけど動いたり動かなかったり
+  - <https://stackoverflow.com/questions/4477031/vim-auto-indent-with-newline>
+  - [x] 直接[等にマッピングしても良いが、paste時にも反応してしまい困る
+    - <https://vimawesome.com/plugin/autoclose> これを入れるとうまくいく
+- [x] コメントアウトがjsの領域で効かない
+  - <https://github.com/tomtom/tcomment_vim>
+  - vim-commentaryと共存できるっぽい
+- [ ] 矢印キー押下するとC,B等が入力される
+  - <https://askubuntu.com/questions/353911/hitting-arrow-keys-adds-characters-in-vi-editor>
+  - 最初に押すとまだ発生している模様、filetype vueに関係する？
+    - 関係しない、今までは発生していなかった気がするが...
+- [x] ブラウザでvueのdataを参照したい
+  - できた
+- [ ] E73 tag stack empty

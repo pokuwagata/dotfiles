@@ -6,14 +6,17 @@ language en_US
 set relativenumber
 
 set autoindent
+filetype plugin indent on
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set ambiwidth=double
+set hlsearch
 
 set clipboard=unnamed,autoselect
 set backspace=indent,eol,start
-let g:auto_save = 1
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 set noswapfile
 set nobackup

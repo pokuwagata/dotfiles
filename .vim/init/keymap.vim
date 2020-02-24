@@ -1,7 +1,7 @@
 let mapleader = "\<Space>"
 
 noremap <Leader>] :source ~/.vimrc<CR>
-noremap <Leader>E :Ex<CR>
+noremap <Leader>E :Exp<CR>
 
 "easymotion
 map <Leader><Leader> <Plug>(easymotion-prefix)
@@ -16,13 +16,6 @@ nnoremap <Leader>s :GFiles?<CR>
 nnoremap <Leader>h :History<CR>
 nnoremap <Leader>F :GGrep<CR>
 xnoremap <silent> <Leader>g y:Rg <C-R>"<CR>
-
-"Cutlass
-nnoremap x d
-xnoremap x d
-nnoremap xx dd
-nnoremap X D
-nnoremap X D
 
 "ctags
 "tmux uses <C-t>
@@ -50,10 +43,26 @@ nnoremap sN <C-w>v
 nnoremap st :<C-u>tabnew<CR>
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
-nnoremap sq :<C-u>q<CR>
+nnoremap sq :<C-u>wq<CR>
+nnoremap qa :<C-u>qa<CR>
 nnoremap sQ :<C-u>bd<CR>
 nnoremap s+ <C-w>\|<C-w>_
 nnoremap s= <C-w>=
+nnoremap zz :update<CR>
+ 
+" highlight
+nnoremap noh :noh<CR>
+" To clear the last used search pattern
+nnoremap <CR> :let @/ = ""<CR>
+
+" disable arrow key insert letter
+" https://superuser.com/questions/237751/messed-up-keys-in-vim-when-running-inside-tmux
+map <Esc>[B <Down>
+
+inoremap <C-b> <Left>
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
+inoremap <C-f> <Right>
 
 "for vim-lsp
 "function! s:on_lsp_buffer_enabled() abort

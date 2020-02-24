@@ -35,7 +35,8 @@
   - rvm global 2.7.0した後にsourceしたらruby --versionに反映された
 - [ ] debug
   - [ ] <https://stackoverflow.com/questions/16742516/vim-ruby-debugger-style-breakpoints-with-pry-in-vim>
-- [ ] 1行目がコメントのコードをコピペするとその下にコメント記号が挿入されて貼り付けられる問題
+- [x] 1行目がコメントのコードをコピペするとその下にコメント記号が挿入されて貼り付けられる問題
+  - formatoptionsを設定することで解消した
 - [x] c-tagsでrailsの定義に移動できるようにできないか
   - brew install ctags
   - vim-ctags install
@@ -50,8 +51,39 @@
   - [x] 定義へ移動・定義から戻るのキーマップを定義
   - [x] gem, railsの定義にジャンプできるか確認
   - [x] fzf.vimで:Ctags
+- solargraphをDocker上で動かしておくという方法もあるみたい
+  - rbenvを使用していると各バージョンごとにインストールが必要になるため合理的ではある
+  - <http://koyamay.hatenablog.com/entry/2020/01/05/124346>
 
 ## ハマり
+
+### 特定の環境だけでcoc-solargraphが動作する
+
+- 対象にするファイルが多すぎると時間がかかる模様
+  - <https://github.com/castwide/solargraph/issues/164#issuecomment-470801845>
+- :CocCommand → solargraph.configすることで解消できる
+
+動く
+
+- ~/.ghq/github.com/yasslab/sample_apps/5_1_2/ch07 master* 9s
+- sample_apps配下はなぜか動く
+
+1分後に動く
+
+- rails
+
+2020-01-18T20:53:00.269 INFO (pid:71222) [services] - registered service "solargraph"
+2020-01-18T20:54:21.577 INFO (pid:71222) [services] - Ruby Language Server state change: starting => running
+
+2分後に動く
+
+- ~/.ghq/github.com/pokuwagata/ruby-playground/ch07
+
+
+### rbenvのrubyバージョン指定の方法が意味不明
+
+- ターミナル再起動すると2.4.1になる
+- local/global/shellの違いがわからん
 
 ### プロジェクト配下でbundle install or bundle install --path vendor/bundle はどっちがいい？
 
@@ -64,12 +96,28 @@
 - :CocInfoで動作確認
 - <https://solargraph.org/guides/rails>
   - solargraph bundle
+    - solargraph bundle は何をしている？ 以下が生成される
+
+    ```
+    drwxr-xr-x  3 nakahata staff  96  1 18 21:32 actioncable-5.1.2
+    drwxr-xr-x  3 nakahata staff  96  1 18 21:32 actionmailer-5.1.2
+    drwxr-xr-x  3 nakahata staff  96  1 18 21:32 actionpack-5.1.2
+    drwxr-xr-x  3 nakahata staff  96  1 18 21:32 actionview-5.1.2
+    drwxr-xr-x  3 nakahata staff  96  1 18 21:32 activejob-5.1.2
+    drwxr-xr-x  3 nakahata staff  96  1 18 21:32 activemodel-5.1.2
+    drwxr-xr-x  3 nakahata staff  96  1 18 21:32 activerecord-5.1.2
+    drwxr-xr-x  3 nakahata staff  96  1 18 21:32 activesupport-5.1.2
+    drwxr-xr-x  3 nakahata staff  96  1 18 21:32 railties-5.1.2
+    ```
+
   - rails.rb置く
 - 基本的には対応は不完全らしい
   - <https://github.com/castwide/solargraph/issues/87>
 - Railsライブラリは、クラス名で定義元にジャンプはできるが、メソッドができないみたい
   - solargraph config して.solargraph.yamlでvendor/bundleを含めるようにしたら解決するのでは？
   - 特に動き変わらなかった、逆にsymbolが正しく表示されなくなった（扱うファイルが多すぎるせいかも）
+- :CocCommand → Build new gem documentationでincludeされているgemの補完が動作するようになる
+  - これがかなり重要そう
 
 ### railsプロジェクトのルートをどう判断しているか不明問題
 

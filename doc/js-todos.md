@@ -35,6 +35,11 @@
   - [x] jsx, tsx
   - [x] typescript
 - [ ] 保存時にprettier適用
+  - vim-prettierは動作したが、auto-saveとは相性がよくない模様
+  - aleでも動作しなかった
+  - <https://prettier.io/docs/en/vim.html>
+  - autocmd で設定すれば手動保存時は動作した
+    - <https://www.dailysmarty.com/posts/how-to-setup-prettier-with-vim>
 - [ ] Ctags
 - [ ] Btagsの動作確認
 
