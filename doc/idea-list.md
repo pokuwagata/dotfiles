@@ -15,4 +15,14 @@
   - とりあえず形態素解析・構文解析できるだけでも面白いことはできそう
     - <https://qiita.com/Harusugi/items/f499e8707b36d0f570c4>
     - <https://qiita.com/shoichiro-k/items/5d28be844f664100387b>
-- [ ] headless cmsでブログ立てる
+- [x] headless cmsでブログ立てる
+  - gatsuby, graphqlはまったく書いていないが、構成の雰囲気は分かった
+- [ ] シェル芸用Dockerfile作る
+  - volumeを使えば起動中のコンテナのソースをいじれる
+  - <https://blog.softwaremill.com/editing-files-in-a-docker-container-f36d76b9613c>
+- [ ] cronを動かしてみる
+- [ ] slack botを作ってみる
+  - [Slack App開発ガイド](https://booth.pm/ja/items/1475515)
+- [ ] TypeScriptでBFF書いてみる
+- [ ] SearchEngineGo_v1.0.0
+- [ ] isucon-ebook

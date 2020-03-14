@@ -14,7 +14,7 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "mollifier/anyframe"
 zplug "greymd/docker-zsh-completion"
-zplug "motemen/ghq", as:command, from:gh-r
+zplug "x-motemen/ghq", as:command, from:gh-r
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
 # Install plugins if there are plugins that have not been installed

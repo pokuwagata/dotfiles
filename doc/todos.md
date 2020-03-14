@@ -114,7 +114,7 @@
 
 ### coc.nvim
 
-- [x] coc.nvim] error: Some plugin change completeopt on insert mode! 
+- [x] coc.nvim] error: Some plugin change completeopt on insert mode!
   - "suggest.autoTrigger": "trigger"　したら発生しなくなった
   - 結局どういう意図のエラーなのかよく分からない
   - language-serverをインストールしていれば対応するファイルでは補完された
@@ -122,7 +122,8 @@
 - [ ] どのlanguage serverを使用しているか設定ファイルに記載したら別の環境でもダウンロードできるようにしたい
   - これでいけそう　let g:coc_global_extensions = ['coc-solargraph']
   - <http://blog.jamesnewton.com/setting-up-coc-nvim-for-ruby-development>
-- [ ] [coc.nvim] The workspace is too large to index (5755 files, 5000 max)   
+- [ ] [coc.nvim] The workspace is too large to index (5755 files, 5000 max)
+- [ ] 補完候補ポップアップ時にesc押したらそのままノーマルモードに行ってほしい（1回目はポップアップキャンセルと認識される）
 
 ### ハマり
 
@@ -221,17 +222,25 @@
     - `$ ssh -vT git@github.com`
       - `Hi pokuwagata! You've successfully authenticated, but GitHub does not provide shell access.`
       - 成功したっぽい
-- [ ] hub deleteはない？
-- [ ] ghq getしたディレクトリじゃないとC-gの候補には出てこない？
-- [ ] なぜかカーソルが_になっていて、アンダーラインとかぶると認識できない
+- [x] hub deleteはない？
+  - Github上のリポジトリは画面じゃないと無理っぽい？
+  - ローカルのディレクトリならrmするしかない
+- [x] ghq getしたディレクトリじゃないとC-gの候補には出てこない？
+  - git initしていないと駄目
+- [x] なぜかカーソルが_になっていて、アンダーラインとかぶると認識できない
 - [x] 何が起きたか確認したいときに便利そう
   - <https://stackoverflow.com/questions/16085958/find-the-files-that-have-been-changed-in-last-24-hours>
   - `find ~/.ghq/github.com/yasslab -mmin -5 -ls`
-- [ ] optionキーで単語移動したい
+- [x] optionキーで単語移動したい
 
 ## tmux
 
 - [ ] 分割ウィンドウの幅変更したい
+
+## tig
+
+- [ ] カーソル行の黄緑色と白文字が重なると見えにくいので改善したい
+  - tigrcで設定可能な模様 <https://github.com/jonas/tig/blob/master/doc/tigrc.5.adoc#color-command>
 
 ## Git
 
@@ -245,3 +254,8 @@
 - tig, figitive解説
   - <http://wakame.hatenablog.jp/entry/2017/05/03/222511>
 
+## 修正意図
+hoge
+## 修正内容
+hoge
+## 影響範囲
