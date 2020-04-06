@@ -46,6 +46,7 @@ alias aw=anyframe-widget-select-widget
 alias l='ls -ltr --color=auto'
 alias la='ls -la --color=auto'
 alias ctags="`brew --prefix`/bin/ctags"
+alias dco="docker-compose"
 
 # History
 export LANG=ja_JP.UTF-8
@@ -68,6 +69,7 @@ eval "$(rbenv init -)"
 # override /etc/paths
 PATH=/usr/local/opt/coreutils/libexec/gnubin:${PATH}
 PATH=/Users/nakahata/.nodebrew/current/bin:${PATH}
+
 MANPATH=/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}
 
 

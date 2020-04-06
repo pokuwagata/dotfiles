@@ -81,7 +81,24 @@
 - [x] snipet 使ってみる
 - [x] markdown 用の設定を行う
 - [ ] TypeScript 用の設定を行う
+  - JSON to TS
+  - JavaScript code snippets
 - [ ] React 用の設定を行う
+- [ ] フロントエンド
+  - HTML
+    - Auto Rename Tag
+    - Highlight Matching Tag
+    - emmet.showSuggestionsAsSnippets
+  - CSS
+    - CSS Peek
+    - CSScomb
+    - CSSTree validator
+    - IntelliSense for CSS class names in HTML
+  - pure static html
+    - Live Server
+  - [ ] その他
+    - Path Intellisense
+    - Code Spell Checker
 
 ## ハマり
 

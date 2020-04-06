@@ -232,6 +232,7 @@
   - <https://stackoverflow.com/questions/16085958/find-the-files-that-have-been-changed-in-last-24-hours>
   - `find ~/.ghq/github.com/yasslab -mmin -5 -ls`
 - [x] optionキーで単語移動したい
+- [] PATHの指定をスマートにしたい<https://qiita.com/GeneralD/items/a87d5d145149a9d214c6>
 
 ## tmux
 
