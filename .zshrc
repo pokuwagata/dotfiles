@@ -63,9 +63,6 @@ function chpwd() {
     ls --color=auto
 }
 
-# rbenv
-eval "$(rbenv init -)"
-
 # override /etc/paths
 PATH=/usr/local/opt/coreutils/libexec/gnubin:${PATH}
 PATH=/Users/nakahata/.nodebrew/current/bin:${PATH}
