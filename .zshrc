@@ -37,10 +37,6 @@ bindkey '^rp' anyframe-widget-put-history
 bindkey '^g' anyframe-widget-cd-ghq-repository
 bindkey '^xf' anyframe-widget-insert-filename
 
-fgb() {
-  git branch -a | fzf
-}
-
 fco() {
   local tags branches target
   branches=$(
@@ -123,7 +119,7 @@ alias l='ls -ltr --color=auto'
 alias la='ls -la --color=auto'
 alias ctags="`brew --prefix`/bin/ctags"
 alias dco="docker-compose"
-alias -g B='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
+alias -g B='$(git branch -a | fzf)'
 
 # History
 export LANG=ja_JP.UTF-8
