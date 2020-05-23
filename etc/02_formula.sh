@@ -12,3 +12,4 @@ brew install hub
 brew tap homebrew/cask-fonts
 brew cask install font-ricty-diminished
 brew install fontforge
+brew cask install amethyst
