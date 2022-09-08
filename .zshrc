@@ -152,3 +152,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
