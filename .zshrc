@@ -1,9 +1,3 @@
-# tmux
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    # tmux attach -t default || tmux new -s default
-    tmux
-fi
-
 autoload -Uz compinit && compinit
 
 # Plugins
@@ -153,3 +147,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
