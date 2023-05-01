@@ -8,8 +8,8 @@ brew install coreutils
 brew install fzf
 brew install ghq
 brew install tig
-brew install hub
+brew install gh
 brew tap homebrew/cask-fonts
-brew cask install font-ricty-diminished
-brew install fontforge
-brew cask install amethyst
+brew install --cask font-ricty-diminished
+brew install --cask fontforge
+brew install --cask install amethyst
