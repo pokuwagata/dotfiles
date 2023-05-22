@@ -77,10 +77,6 @@ setopt share_history
 # Others
 setopt auto_cd
 zstyle ':completion:*:default' menu select=2
-function chpwd() {
-    emulate -L zsh
-    ls --color=auto
-}
 
 # override /etc/paths
 PATH=/usr/local/opt/coreutils/libexec/gnubin:${PATH}
