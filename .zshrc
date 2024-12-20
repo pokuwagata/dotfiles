@@ -58,7 +58,7 @@ alias sz='source ~/.zshrc'
 alias st='tmux source-file ~/.tmux.conf'
 alias l='ls -ltr --color=auto'
 alias la='ls -la --color=auto'
-alias dco="docker-compose"
+alias dco="docker compose"
 alias -g B='$(git branch -a | fzf)'
 alias emulator='~/Library/Android/sdk/emulator/emulator'
 alias android5='emulator -avd Small_Phone_API_21'
