@@ -1,31 +1,10 @@
 autoload -Uz compinit && compinit
-
-# Plugins
-source ~/.zplug/init.zsh
-zplug mafredri/zsh-async, from:github
-zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
-
-# zplug "b4b4r07/enhancd", use:init.sh
-
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-zplug "jeffreytse/zsh-vi-mode"
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-zplug load --verbose
+eval "$(sheldon source)"
 
 # fzf
 source <(fzf --zsh)
 
-fg() {
+cd_ghq() {
   dir=$(ghq list --full-path | fzf --tac --height 40%)
   if [[ -z "$dir" ]]; then
     zle redisplay
@@ -40,15 +19,17 @@ fg() {
   return $ret
 }
 
-zle -N fg
+zle -N cd_ghq
 
 # zvm
-zvm_bindkey vicmd '^g' fg
+ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+
+function zvm_after_lazy_keybindings() {
+  zvm_bindkey vicmd '^g' cd_ghq
+}
 
 # Keybindings
-bindkey -e
-
-bindkey '^g' fg
+bindkey -M viins '^[[91;5u' vi-cmd-mode
 
 # Alias
 alias vz='vim ~/.zshrc'
@@ -56,12 +37,13 @@ alias vze='vim ~/.zshenv'
 alias vt='vim ~/.tmux.conf'
 alias sz='source ~/.zshrc'
 alias st='tmux source-file ~/.tmux.conf'
-alias l='ls -ltr --color=auto'
-alias la='ls -la --color=auto'
 alias dco="docker compose"
 alias -g B='$(git branch -a | fzf)'
 alias emulator='~/Library/Android/sdk/emulator/emulator'
 alias android5='emulator -avd Small_Phone_API_21'
+alias cc='claude'
+alias -g F='$(fzf-file-widget)'
+alias gpv='gh pr view --web'
 
 # History
 export LANG=ja_JP.UTF-8
@@ -89,6 +71,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 clear
+
 # pnpm
 export PNPM_HOME="/Users/nakahata/Library/pnpm"
 case ":$PATH:" in
@@ -96,3 +79,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+eval "$(direnv hook zsh)"
+export PATH="$HOME/.local/bin:$PATH"
