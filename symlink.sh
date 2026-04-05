@@ -5,6 +5,7 @@ ln -sfi $abspath/.vimrc ~/.vimrc
 ln -sfi $abspath/.vim ~/.vim
 ln -sfi $abspath/.zshrc ~/.zshrc
 ln -sfi $abspath/.zshenv ~/.zshenv
-ln -sfi $abspath/.tmux.conf ~/.tmux.conf
+ln -sfi $abspath/.config/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
+ln -sfi $abspath/.config/ghostty/config.ghostty ~/.config/ghostty/config.ghostty
 
 echo 'done'
