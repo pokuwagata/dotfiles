@@ -20,8 +20,8 @@ github = "zsh-users/zsh-autosuggestions"
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 
-[plugins.zsh-vi-mode]
-github = "jeffreytse/zsh-vi-mode"
+# [plugins.zsh-vi-mode]
+# github = "jeffreytse/zsh-vi-mode"
 
 [plugins.zsh-async]
 github = "mafredri/zsh-async"

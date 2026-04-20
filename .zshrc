@@ -1,6 +1,8 @@
 autoload -Uz compinit && compinit
 eval "$(sheldon source)"
 
+export EDITOR=nvim
+
 # fzf
 source <(fzf --zsh)
 
@@ -22,14 +24,16 @@ cd_ghq() {
 zle -N cd_ghq
 
 # zvm
-ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-
-function zvm_after_lazy_keybindings() {
-  zvm_bindkey vicmd '^g' cd_ghq
-}
+# ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+#
+# function zvm_after_lazy_keybindings() {
+#   zvm_bindkey vicmd '^g' cd_ghq
+# }
 
 # Keybindings
-bindkey -M viins '^[[91;5u' vi-cmd-mode
+bindkey -e
+bindkey '^g' cd_ghq
+# bindkey -M viins '^[[91;5u' vi-cmd-mode
 
 # Alias
 alias vz='vim ~/.zshrc'
@@ -44,6 +48,7 @@ alias android5='emulator -avd Small_Phone_API_21'
 alias cc='claude'
 alias -g F='$(fzf-file-widget)'
 alias gpv='gh pr view --web'
+alias ab='agent-browser'
 
 # History
 export LANG=ja_JP.UTF-8
@@ -56,6 +61,15 @@ setopt share_history
 setopt auto_cd
 zstyle ':completion:*:default' menu select=2
 ENHANCD_FILTER="fzf --height 40% --layout reverse"
+
+# Yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
 
 # override /etc/paths
 PATH=/usr/local/opt/coreutils/libexec/gnubin:${PATH}
@@ -81,3 +95,5 @@ esac
 # pnpm end
 eval "$(direnv hook zsh)"
 export PATH="$HOME/.local/bin:$PATH"
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
