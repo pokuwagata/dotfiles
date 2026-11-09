@@ -49,6 +49,7 @@ alias cc='claude'
 alias -g F='$(fzf-file-widget)'
 alias gpv='gh pr view --web'
 alias ab='agent-browser'
+alias lg='lazygit'
 
 # History
 export LANG=ja_JP.UTF-8
@@ -97,3 +98,6 @@ eval "$(direnv hook zsh)"
 export PATH="$HOME/.local/bin:$PATH"
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+# zoxide
+eval "$(zoxide init zsh)"
