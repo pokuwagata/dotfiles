@@ -1,0 +1,64 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "schemaVersion" : 1,
+  "shortcuts" : {
+    "bindings" : {
+      "browserBack" : {
+        "first" : {
+          "command" : false,
+          "control" : false,
+          "key" : "",
+          "option" : false,
+          "shift" : false
+        }
+      },
+      "browserForward" : {
+        "first" : {
+          "command" : false,
+          "control" : false,
+          "key" : "",
+          "option" : false,
+          "shift" : false
+        }
+      },
+      "focusHistoryBack" : {
+        "first" : {
+          "command" : false,
+          "control" : false,
+          "key" : "",
+          "option" : false,
+          "shift" : false
+        }
+      },
+      "focusHistoryForward" : {
+        "first" : {
+          "command" : false,
+          "control" : false,
+          "key" : "",
+          "option" : false,
+          "shift" : false
+        }
+      },
+      "focusNextPane" : {
+        "first" : {
+          "command" : true,
+          "control" : false,
+          "key" : "]",
+          "keyCode" : 30,
+          "option" : false,
+          "shift" : false
+        }
+      },
+      "focusPreviousPane" : {
+        "first" : {
+          "command" : true,
+          "control" : false,
+          "key" : "[",
+          "keyCode" : 33,
+          "option" : false,
+          "shift" : false
+        }
+      }
+    }
+  }
+}

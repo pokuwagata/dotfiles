@@ -9,5 +9,7 @@ ln -sfi $abspath/.config/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
 ln -sfi $abspath/.config/ghostty/config.ghostty ~/.config/ghostty/config.ghostty
 ln -sfi $abspath/.config/yazi ~/.config
 ln -sfi $abspath/.config/nvim ~/.config
+ln -sfi $abspath/.config/ccstatusline ~/.config
+ln -sfi $abspath/.config/cmux ~/.config
 
 echo 'done'
